@@ -70,7 +70,7 @@ export default function Home() {
     useEffect(() => {
       const fetchCircuits = async () => {
         try {
-          const res = await fetch('http://localhost:3000/circuits');
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/circuits`);
           const data = await res.json();
           setCircuits(data);
         } catch (err) {
@@ -320,7 +320,7 @@ export default function Home() {
     {/* Logo + Nom */}
     <div className="flex items-center gap-3">
       <img src="/logo.png" alt="MadaBlue Logo" className="h-12 w-auto" />
-      <span className="font-bold text-lg">Veuillez nous contacter</span>
+      
     </div>
 
       <div className="mt-8 text-center text-sm text-gray-400">

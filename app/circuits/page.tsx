@@ -32,7 +32,7 @@ export default function CircuitsPage() {
       if (regionFilter) params.append('region', regionFilter);
       if (themeFilter) params.append('theme', themeFilter);
 
-      const res = await fetch(`http://localhost:3000/circuits?${params.toString()}`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/circuits?${params.toString()}`);
       if (!res.ok) throw new Error('Erreur API');
 
       const data = await res.json();

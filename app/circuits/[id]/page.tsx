@@ -61,7 +61,7 @@ export default function CircuitDetailPage() {
   useEffect(() => {
     const fetchCircuit = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/circuits/${id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/circuits/${id}`);
         if (!res.ok) throw new Error('Erreur API');
 
         const data: CircuitApi = await res.json();
