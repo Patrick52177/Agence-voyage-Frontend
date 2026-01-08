@@ -67,7 +67,11 @@ export default function Home() {
     const [loading, setLoading] = useState(true);
   
     // Fetch API NestJS
-    useEffect(() => {
+    useEffect(() => { 
+        console.log(
+    'API URL =',
+    process.env.NEXT_PUBLIC_API_URL
+  );
       const fetchCircuits = async () => {
         try {
           const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/circuits`);
