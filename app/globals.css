@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+/* ===============================
+   VARIABLES GLOBALES – BLEU OCÉAN
+================================ */
+:root {
+  /* Background global (océan clair) */
+  --background-main: linear-gradient(
+    180deg,
+    #e6f6fb 0%,
+    #cfeef8 50%,
+    #b8e3f2 100%
+  );
+
+  --foreground: #042a3b;
+
+  /* Couleurs principales */
+  --primary: #0077b6;   /* bleu océan */
+  --secondary: #00b4d8; /* turquoise */
+
+  /* Cartes */
+  --card-bg: rgba(255, 255, 255, 0.92);
+  --card-border: rgba(0, 119, 182, 0.15);
+  --card-shadow: 0 12px 32px rgba(0, 119, 182, 0.18);
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* ===============================
+   DARK MODE – OCÉAN NUIT
+================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-main: linear-gradient(
+      180deg,
+      #02131d 0%,
+      #031f2e 100%
+    );
+
+    --foreground: #e0f2f8;
+
+    --card-bg: rgba(4, 42, 59, 0.92);
+    --card-border: rgba(0, 180, 216, 0.25);
+    --card-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* ===============================
+   BASE
+================================ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: var(--font-sans);
+  background: var(--background-main);
+  color: var(--foreground);
+  scroll-behavior: smooth;
+}
+
+/* ===============================
+   BACKGROUND GLOBAL (effet eau)
+================================ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(0, 180, 216, 0.18), transparent 45%),
+    radial-gradient(circle at bottom right, rgba(0, 119, 182, 0.22), transparent 45%);
+  z-index: -1;
+}
+
+/* ===============================
+   SECTIONS
+================================ */
+main,
+section {
+  position: relative;
+}
+
+/* ===============================
+   ANIMATIONS
+================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeInUp 0.8s ease both;
+}
+
+/* Hero zoom (images) */
+@keyframes heroZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.08); }
+}
+
+.hero-zoom {
+  animation: heroZoom 14s linear infinite alternate;
+}
+
+/* Overlay dynamique */
+@keyframes overlayMove {
+  0%   { opacity: 0.55; }
+  50%  { opacity: 0.35; }
+  100% { opacity: 0.55; }
+}
+
+.animate-overlay {
+  animation: overlayMove 8s ease-in-out infinite;
+}
+
+/* ===============================
+   CARTES (circuits, détails, etc.)
+================================ */
+.card-hover {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 1.25rem;
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(12px);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0, 119, 182, 0.35);
+}
+
+/* ===============================
+   IMAGES
+================================ */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===============================
+   BOUTONS
+================================ */
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+/* Boutons personnalisés */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #ffffff;
+  padding: 0.9rem 2.2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 12px 28px rgba(0, 119, 182, 0.45);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--secondary);
+  color: var(--primary);
+  padding: 0.9rem 2.2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  color: #ffffff;
+}
+
+/* ===============================
+   INFO BOXES
+================================ */
+.info-box {
+  background: rgba(0, 180, 216, 0.12);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.info-label {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.info-value {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.info-price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* ===============================
+   FOOTER
+================================ */
+footer {
+  opacity: 0.7;
+  font-size: 0.875rem;
+  text-align: center;
+}
+/* ===============================
+   BOUTON WHATSAPP FLOTTANT
+================================ */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 1000;
+
+   width: 72px;
+  height: 72px;
+  
+  background: linear-gradient(135deg, #25D366, #1ebe5d);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.12);
+  box-shadow: 0 18px 40px rgba(37, 211, 102, 0.6);
+}
+
+/* Icône WhatsApp */
+whatsapp-float img {
+  width: 38px;
+  height: 38px;
+}
